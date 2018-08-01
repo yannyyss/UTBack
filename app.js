@@ -12,7 +12,7 @@ const path         = require('path');
 
 mongoose.Promise = Promise;
 mongoose
-  .connect('mongodb://localhost/server', {useMongoClient: true})
+  .connect('mongodb://localhost/ut', {useMongoClient: true}) //nombre de mi base de datos
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {
@@ -52,7 +52,11 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 
 const index = require('./routes/index');
+const auth = require('./routes/auth');
+const places = require('./routes/places');
 app.use('/', index);
+app.use('/', auth);
+app.use('/places', places)
 
 
 module.exports = app;
