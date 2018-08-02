@@ -9,10 +9,9 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 
-
 mongoose.Promise = Promise;
 mongoose
-  .connect('mongodb://localhost/ut', {useMongoClient: true}) //nombre de mi base de datos
+  .connect('mongodb://ut:utpass12@ds051943.mlab.com:51943/ut', {useMongoClient: true}) //nombre de mi base de datos
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {
@@ -29,6 +28,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(require('cors')());
 
 // Express View engine setup
 
